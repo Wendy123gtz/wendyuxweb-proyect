@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Tooltip - Video Player demo</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <style>
+  .player {
+    width: 500px;
+    height: 300px;
+    border: 2px groove gray;
+    background: #ccc;
+    text-align: center;
+    line-height: 300px;
+  }
+  .ui-tooltip {
+    border: 1px solid white;
+    background: #111;
+    color: white;
+  }
+  .ui-menu {
+    position: absolute;
+  }
+  .set {
+    display: inline-block;
+  }
+  .notification {
+    position: absolute;
+    display: inline-block;
+    font-size: 2em;
+    padding: .5em;
+    box-shadow: 2px 2px 5px -2px rgba(0,0,0,0.5);
+
+     footer{border:10px groove lavender; 
+background: white;
+bottom:0; color:pink;
+ float:relative; 
+width:97em ; 
+height:10em;
+ margin-right:1em}
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    function notify( input ) {
+      var msg = "Seleccionaste " + $.trim( input.data( "tooltip-title" ) || input.text() );
+      $( "<div>" )
+        .appendTo( document.body )
+        .text( msg )
+        .addClass( "notification ui-state-default ui-corner-bottom" )
+        .position({
+          my: "center top",
+          at: "center top",
+          of: window
+        })
+        .show({
+          effect: "blind"
+        })
+        .delay( 1000 )
+        .hide({
+          effect: "blind",
+          duration: "slow"
+        }, function() {
+          $( this ).remove();
+        });
+    }
+ 
+    $( "button" ).each(function() {
+      var button = $( this ).button({
+        icons: {
+          primary: $( this ).data( "icon" )
+        },
+        text: !!$( this ).attr( "title" )
+      });
+      button.not( ".menu" ).on( "click", function() {
+        notify( button );
+      });
+    });
+    $( ".set" ).controlgroup({
+      items: {
+        "button" : "button"
+      }
+    });
+ 
+    $( "button.menu" )
+      .on( "click", function() {
+        $( document ).tooltip( "close", { currentTarget: this });
+        var menu = $( this ).next().show().position({
+          my: "left top",
+          at: "left bottom",
+          of: this
+        });
+        $( document ).one( "click", function() {
+          menu.hide();
+        });
+        return false;
+      })
+      .next()
+        .hide()
+        .menu({
+          selected: function( event, ui ) {
+            notify( ui.item );
+          }
+        });
+ 
+    $( document ).tooltip({
+      position: {
+        my: "center top",
+        at: "center bottom+5",
+      },
+      show: {
+        duration: "fast"
+      },
+      hide: {
+        effect: "hide"
+      }
+    });
+  } );
+  </script>
+
+  <style>
+  footer{
+  border:10px groove lavender;
+   background: white;
+    bottom:0; 
+    color:pink;
+   float:relative;
+  
+  width:97em ;
+  height:10em;
+  margin-right:1em}
+}
+</style>
+
+</head>
+<body style="background: #31BAE2">
+
+   
+  <nav class="nave">
+<table >
+<tr>
+
+<td><a href=index.php><p style="font-size: 1.6em; background-color:white;font-family:Bernard MT Condensed;">|INICIO|</p></td>
+
+
+<td><a href=4SSantiagoGutierrezWendy17.html><p style=" font-size: 1.2em; background-color:white;font-family:Bernard MT Condensed;">|T&eacute;cnicas De Pintura|</p></td>
+
+
+<td><a href=4SSantiagoGutierrezWendy18.html><p style="font-size: 1.6em;background-color:white;font-family:Bernard MT Condensed;">|Buscador|</p></a></td>
+
+<td><a href=4SSantiagoGutierrezWendy19.html><p style="font-size: 1.6em;background-color:white;font-family:Bernard MT Condensed;">|Deslizar|</p></a></td>
+
+<td><a href=4SSantiagoGutierrezWendy20.html><p style="font-size: 1.6em;background-color:white;font-family:Bernard MT Condensed;">|Delfines|</p></a></td>
+
+<td><a href=4SSantiagoGutierrezWendy21.html><p style="font-size: 1.6em;background-color:white;font-family:Bernard MT Condensed;">
+|Suculentas|</p></a></td>
+
+<td><a href=4SSantiagoGutierrezWendy22.html><p style="font-size: 1.6em;background-color:white;font-family:Bernard MT Condensed;">
+|Colorear|</p></a></td>
+
+<td><a href=4SSantiagoGutierrezWendy23.html><p style="font-size: 1.6em;background-color:white;font-family:Bernard MT Condensed;">
+|Elefantes|</p></a></td>
+
+<td><a href=4SSantiagoGutierrezWendy24.html><p style="font-size: 1.6em;background-color:white;font-family:Bernard MT Condensed;">
+|Futbol|</p></a></td>
+
+<td><a href=4SSantiagoGutierrezWendy25.html><p style="font-size: 1.2em;background-color:white;font-family:Bernard MT Condensed;">
+|Tim Burton|</p></a></td>
+
+<td><a href=4SSantiagoGutierrezWendy26.html><p style="font-size: 1.6em;background-color:white;font-family:Bernard MT Condensed;">
+|Valor|</p></a></td>
+
+<td><a href=4SSantiagoGutierrezWendy27.html><p style="font-size: 1.6em;background-color:white;font-family:Bernard MT Condensed;">
+|Anuncio|</p></a></td>
+
+<td><a href=4SSantiagoGutierrezWendy28.html><p style="font-size: 1.6em;background-color:white;font-family:Bernard MT Condensed;">
+|Video|</p></a></td>
+
+<td><a href=4SSantiagoGutierrezWendy29.html><p style="font-size: 1.6em;background-color:white;font-family:Bernard MT Condensed;">
+|Descarga|</p></a></td>
+
+<td><a href=4SSantiagoGutierrezWendy30.html><p style="font-size: 1.6em;background-color:white;font-family:Bernard MT Condensed;">|Galery|</p></a></td>
+
+
+
+</tr>
+</table>
+</nav>
+
+<br><br><br><br><br><br><br><br>
+
+ <div align="center"><br><br><br><br><br><br><br><br>
+<div class="player"><video src="videos/videoplayback.mp4" controls width="500" height="300"></video>)</div>
+<div class="tools">
+  <span class="set">
+    <button  title="Te Gusta"> 👍🏻Like</button>
+    <button >👎🏻No Me Gusta</button>
+  </span>
+  <div class="set">
+    <button data-icon="ui-icon-circle-plus" title="Add to Watch Later">Guardar</button>
+    <button class="menu" data-icon="ui-icon-triangle-1-s">Ver Mas Tarde</button>
+    <ul>
+      <li><div>Favoritos</div></li>
+      <li><div>Playlist</div></li>
+      <li></li>
+      <li><div>New playlist...</div></li>
+    </ul>
+  </div>
+  <button title="Share this video">Compartir</button>
+  <button data-icon="ui-icon-alert">Denunciar</button>
+</div>
+ </div>
+ <br><br><br>
+ <div align="center">
+ <footer ><br><br><br>
+ |
+ <span>  Wendy Santiago Gutierrez 🤓</span>
+ |
+ <span>Programaci&oacuten 🖥️ </span>
+ |
+ <span> Mayo,2020</span>
+ </footer>
+
+</body>
+</html>

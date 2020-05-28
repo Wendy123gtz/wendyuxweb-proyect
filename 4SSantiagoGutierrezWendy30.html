@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Droppable - Simple photo manager</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <style>
+  #gallery { float: left; width: 65%; min-height: 12em; }
+  .gallery.custom-state-active { background: #eee; }
+  .gallery li { float: left; width: 96px; padding: 0.4em; margin: 0 0.4em 0.4em 0; text-align: center; }
+  .gallery li h5 { margin: 0 0 0.4em; cursor: move; }
+  .gallery li a { float: right; }
+  .gallery li a.ui-icon-zoomin { float: left; }
+  .gallery li img { width: 100%; cursor: move; }
+ 
+  #trash { float: right; width: 32%; min-height: 18em; padding: 1%; }
+  #trash h4 { line-height: 16px; margin: 0 0 0.4em; }
+  #trash h4 .ui-icon { float: left; }
+  #trash .gallery h5 { display: none; }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+ 
+    // There's the gallery and the trash
+    var $gallery = $( "#gallery" ),
+      $trash = $( "#trash" );
+ 
+    // Let the gallery items be draggable
+    $( "li", $gallery ).draggable({
+      cancel: "a.ui-icon", // clicking an icon won't initiate dragging
+      revert: "invalid", // when not dropped, the item will revert back to its initial position
+      containment: "document",
+      helper: "clone",
+      cursor: "move"
+    });
+ 
+    // Let the trash be droppable, accepting the gallery items
+    $trash.droppable({
+      accept: "#gallery > li",
+      classes: {
+        "ui-droppable-active": "ui-state-highlight"
+      },
+      drop: function( event, ui ) {
+        deleteImage( ui.draggable );
+      }
+    });
+ 
+    // Let the gallery be droppable as well, accepting items from the trash
+    $gallery.droppable({
+      accept: "#trash li",
+      classes: {
+        "ui-droppable-active": "custom-state-active"
+      },
+      drop: function( event, ui ) {
+        recycleImage( ui.draggable );
+      }
+    });
+ 
+    // Image deletion function
+    var recycle_icon = "<a href='link/to/recycle/script/when/we/have/js/off' title='Recycle this image' class='ui-icon ui-icon-refresh'>Papelera</a>";
+    function deleteImage( $item ) {
+      $item.fadeOut(function() {
+        var $list = $( "ul", $trash ).length ?
+          $( "ul", $trash ) :
+          $( "<ul class='gallery ui-helper-reset'/>" ).appendTo( $trash );
+ 
+        $item.find( "a.ui-icon-trash" ).remove();
+        $item.append( recycle_icon ).appendTo( $list ).fadeIn(function() {
+          $item
+            .animate({ width: "48px" })
+            .find( "img" )
+              .animate({ height: "36px" });
+        });
+      });
+    }
+ 
+    // Image recycle function
+    var trash_icon = "<a href='link/to/trash/script/when/we/have/js/off' title='Delete this image' class='ui-icon ui-icon-trash'>Eliminar</a>";
+    function recycleImage( $item ) {
+      $item.fadeOut(function() {
+        $item
+          .find( "a.ui-icon-refresh" )
+            .remove()
+          .end()
+          .css( "width", "96px")
+          .append( trash_icon )
+          .find( "img" )
+            .css( "height", "72px" )
+          .end()
+          .appendTo( $gallery )
+          .fadeIn();
+      });
+    }
+ 
+    // Image preview function, demonstrating the ui.dialog used as a modal window
+    function viewLargerImage( $link ) {
+      var src = $link.attr( "href" ),
+        title = $link.siblings( "img" ).attr( "alt" ),
+        $modal = $( "img[src$='" + src + "']" );
+ 
+      if ( $modal.length ) {
+        $modal.dialog( "open" );
+      } else {
+        var img = $( "<img alt='" + title + "' width='384' height='288' style='display: none; padding: 8px;' />" )
+          .attr( "src", src ).appendTo( "body" );
+        setTimeout(function() {
+          img.dialog({
+            title: title,
+            width: 400,
+            modal: true
+          });
+        }, 1 );
+      }
+    }
+ 
+    // Resolve the icons behavior with event delegation
+    $( "ul.gallery > li" ).on( "click", function( event ) {
+      var $item = $( this ),
+        $target = $( event.target );
+ 
+      if ( $target.is( "a.ui-icon-trash" ) ) {
+        deleteImage( $item );
+      } else if ( $target.is( "a.ui-icon-zoomin" ) ) {
+        viewLargerImage( $target );
+      } else if ( $target.is( "a.ui-icon-refresh" ) ) {
+        recycleImage( $item );
+      }
+ 
+      return false;
+    });
+  } );
+  </script>
+<style type="text/css"> 
+ footer{
+  border:10px groove lavender;
+   background: white;
+    bottom:0; 
+    color:pink;
+   float:relative;
+  
+  width:97em ;
+  height:10em;
+  margin-right:1em}
+}</style>
+
+</head>
+
+
+  <nav class="nave">
+<table >
+<tr>
+
+<td><a href=index.php><p style="font-size: 1.6em; background-color:white;font-family:Bernard MT Condensed;">|INICIO|</p></td>
+
+
+<td><a href=4SSantiagoGutierrezWendy17.html><p style=" font-size: 1.2em; background-color:white;font-family:Bernard MT Condensed;">|T&eacute;cnicas De Pintura|</p></td>
+
+
+<td><a href=4SSantiagoGutierrezWendy18.html><p style="font-size: 1.6em;background-color:white;font-family:Bernard MT Condensed;">|Buscador|</p></a></td>
+
+<td><a href=4SSantiagoGutierrezWendy19.html><p style="font-size: 1.6em;background-color:white;font-family:Bernard MT Condensed;">|Deslizar|</p></a></td>
+
+<td><a href=4SSantiagoGutierrezWendy20.html><p style="font-size: 1.6em;background-color:white;font-family:Bernard MT Condensed;">|Delfines|</p></a></td>
+
+<td><a href=4SSantiagoGutierrezWendy21.html><p style="font-size: 1.6em;background-color:white;font-family:Bernard MT Condensed;">
+|Suculentas|</p></a></td>
+
+<td><a href=4SSantiagoGutierrezWendy22.html><p style="font-size: 1.6em;background-color:white;font-family:Bernard MT Condensed;">
+|Colorear|</p></a></td>
+
+<td><a href=4SSantiagoGutierrezWendy23.html><p style="font-size: 1.6em;background-color:white;font-family:Bernard MT Condensed;">
+|Elefantes|</p></a></td>
+
+<td><a href=4SSantiagoGutierrezWendy24.html><p style="font-size: 1.6em;background-color:white;font-family:Bernard MT Condensed;">
+|Futbol|</p></a></td>
+
+<td><a href=4SSantiagoGutierrezWendy25.html><p style="font-size: 1.2em;background-color:white;font-family:Bernard MT Condensed;">
+|Tim Burton|</p></a></td>
+
+<td><a href=4SSantiagoGutierrezWendy26.html><p style="font-size: 1.6em;background-color:white;font-family:Bernard MT Condensed;">
+|Valor|</p></a></td>
+
+<td><a href=4SSantiagoGutierrezWendy27.html><p style="font-size: 1.6em;background-color:white;font-family:Bernard MT Condensed;">
+|Anuncio|</p></a></td>
+
+<td><a href=4SSantiagoGutierrezWendy28.html><p style="font-size: 1.6em;background-color:white;font-family:Bernard MT Condensed;">
+|Video|</p></a></td>
+
+<td><a href=4SSantiagoGutierrezWendy29.html><p style="font-size: 1.6em;background-color:white;font-family:Bernard MT Condensed;">
+|Descarga|</p></a></td>
+
+<td><a href=4SSantiagoGutierrezWendy30.html><p style="font-size: 1.6em;background-color:white;font-family:Bernard MT Condensed;">|Galery|</p></a></td>
+
+
+
+</tr>
+</table>
+</nav>
+
+<br><br><br><br><br><br><br><br>
+
+
+<body style="background: #FFF094">
+  <h1 style="text-align: center;"> Galeria de Fotos 📷</h1> 
+<div class="ui-widget ui-helper-clearfix">
+ 
+<ul id="gallery" class="gallery ui-helper-reset ui-helper-clearfix">
+  <li class="ui-widget-content ui-corner-tr">
+    <h5 class="ui-widget-header">IMG 1</h5>
+
+      <img src="imagenes01/12b1c7e9922e9a7055ca78d0e8863490.jpg" alt="Salmo 14:38" width="96" height="72">
+    <a href="imagenes01/12b1c7e9922e9a7055ca78d0e8863490.jpg" title="View larger image" class="ui-icon ui-icon-zoomin">View larger</a>
+    <a href="link/to/trash/script/when/we/have/js/off" title="E  " class="ui-icon ui-icon-trash">Eliminar</a>
+  </li>
+
+  <li class="ui-widget-content ui-corner-tr">
+    <h5 class="ui-widget-header">IMG 2</h5>
+    <img src="imagenes01/captura.jpg" alt="TCaptura_de_Pantalla" width="96" height="72">
+    <a href="imagenes01/captura.jpg" title="View larger image" class="ui-icon ui-icon-zoomin">View larger</a>
+    <a href="link/to/trash/script/when/we/have/js/off" title="Delete this image" class="ui-icon ui-icon-trash">Eliminar</a>
+  </li>
+  <li class="ui-widget-content ui-corner-tr">
+    <h5 class="ui-widget-header">IMG 3</h5>
+    <img src="imagenes01/WhatsApp Image 2020-05-26 at 1.21.46 PM.jpeg" alt="captura de WhatsApp" width="96" height="72">
+    <a href="imagenes01/WhatsApp Image 2020-05-26 at 1.21.46 PM.jpeg" title="View larger image" class="ui-icon ui-icon-zoomin">View larger</a>
+    <a href="link/to/trash/script/when/we/have/js/off" title="Delete this image" class="ui-icon ui-icon-trash">Eliminar</a>
+  </li>
+  <li class="ui-widget-content ui-corner-tr">
+    <h5 class="ui-widget-header">IMG 4</h5>
+    <img src="imagenes01/WhatsApp Image 2020-05-26 at 1.24.24 PM.jpeg" alt="Captura de WhatsApp" width="96" height="72">
+    <a href="imagenes01/WhatsApp Image 2020-05-26 at 1.24.24 PM.jpeg" title="View larger image" class="ui-icon ui-icon-zoomin">View larger</a>
+    <a href="link/to/trash/script/when/we/have/js/off" title="Delete this image" class="ui-icon ui-icon-trash">Eliminar</a>
+  </li>
+   <li class="ui-widget-content ui-corner-tr">
+    <h5 class="ui-widget-header">IMG 5</h5>
+    <img src="imagenes01/tempera.jpg" alt="tempera" width="96" height="72">
+    <a href="imagenes01/tempera.jpg" title="View larger image" class="ui-icon ui-icon-zoomin">View larger</a>
+    <a href="link/to/trash/script/when/we/have/js/off" title="Delete this image" class="ui-icon ui-icon-trash">Eliminar</a>
+  </li>
+   <li class="ui-widget-content ui-corner-tr">
+    <h5 class="ui-widget-header">IMG 6</h5>
+    <img src="imagenes01/s1.jpg" alt="On top of Kozi kopka" width="96" height="72">
+    <a href="imagenes01/s1.jpg" title="View larger image" class="ui-icon ui-icon-zoomin">View larger</a>
+    <a href="link/to/trash/script/when/we/have/js/off" title="Delete this image" class="ui-icon ui-icon-trash">Eliminar</a>
+  </li>
+   <li class="ui-widget-content ui-corner-tr">
+    <h5 class="ui-widget-header">IMG 7</h5>
+    <img src="imagenes01/s2.jpg" alt="On top of Kozi kopka" width="96" height="72">
+    <a href="imagenes01/s2.jpg" title="View larger image" class="ui-icon ui-icon-zoomin">View larger</a>
+    <a href="link/to/trash/script/when/we/have/js/off" title="Delete this image" class="ui-icon ui-icon-trash">Eliminar</a>
+  </li>
+   <li class="ui-widget-content ui-corner-tr">
+    <h5 class="ui-widget-header">IMG 8</h5>
+    <img src="imagenes01/e.jpg" alt="On top of Kozi kopka" width="96" height="72">
+    <a href="imagenes01/e.jpg" title="View larger image" class="ui-icon ui-icon-zoomin">View larger</a>
+    <a href="link/to/trash/script/when/we/have/js/off" title="Delete this image" class="ui-icon ui-icon-trash">Eliminar</a>
+  </li>
+   <li class="ui-widget-content ui-corner-tr">
+    <h5 class="ui-widget-header">IMG 9</h5>
+    <img src="imagenes01/delfines.jpg" alt="On top of Kozi kopka" width="96" height="72">
+    <a href="imagenes01/delfines.jpg" title="View larger image" class="ui-icon ui-icon-zoomin">View larger</a>
+    <a href="link/to/trash/script/when/we/have/js/off" title="Delete this image" class="ui-icon ui-icon-trash">Eliminar</a>
+  </li>
+   <li class="ui-widget-content ui-corner-tr">
+    <h5 class="ui-widget-header">IMG 10</h5>
+    <img src="imagenes01/collage.jpg" alt="On top of Kozi kopka" width="96" height="72">
+    <a href="imagenes01/collage.jpg" title="View larger image" class="ui-icon ui-icon-zoomin">View larger</a>
+    <a href="link/to/trash/script/when/we/have/js/off" title="Delete this image" class="ui-icon ui-icon-trash">Eliminar</a>
+  </li>
+   <li class="ui-widget-content ui-corner-tr">
+    <h5 class="ui-widget-header">IMG 11</h5>
+    <img src="imagenes01/colores.jpg" alt="On top of Kozi kopka" width="96" height="72">
+    <a href="imagenes01/colores.jpg" title="View larger image" class="ui-icon ui-icon-zoomin">View larger</a>
+    <a href="link/to/trash/script/when/we/have/js/off" title="Delete this image" class="ui-icon ui-icon-trash">Eliminar</a>
+  </li>
+   <li class="ui-widget-content ui-corner-tr">
+    <h5 class="ui-widget-header">IMG 12</h5>
+    <img src="imagenes01/a.png.jpg" alt="On top of Kozi kopka" width="96" height="72">
+    <a href="imagenes01/a.png.jpg" title="View larger image" class="ui-icon ui-icon-zoomin">View larger</a>
+    <a href="link/to/trash/script/when/we/have/js/off" title="Delete this image" class="ui-icon ui-icon-trash">Eliminar</a>
+  </li>
+   <li class="ui-widget-content ui-corner-tr">
+    <h5 class="ui-widget-header">IMG 13</h5>
+    <img src="imagenes01/arte01.jpg" alt="On top of Kozi kopka" width="96" height="72">
+    <a href="imagenes01/arte01.jpg" title="View larger image" class="ui-icon ui-icon-zoomin">View larger</a>
+    <a href="link/to/trash/script/when/we/have/js/off" title="Delete this image" class="ui-icon ui-icon-trash">Eliminar</a>
+  </li>
+   <li class="ui-widget-content ui-corner-tr">
+    <h5 class="ui-widget-header">IMG 14</h5>
+    <img src="imagenes01/futbol.jpg" alt="On top of Kozi kopka" width="96" height="72">
+    <a href="imagenes01/futbol.jpg" title="View larger image" class="ui-icon ui-icon-zoomin">View larger</a>
+    <a href="link/to/trash/script/when/we/have/js/off" title="Delete this image" class="ui-icon ui-icon-trash">Eliminar</a>
+  </li>
+   <li class="ui-widget-content ui-corner-tr">
+    <h5 class="ui-widget-header">IMG 15</h5>
+    <img src="imagenes01/s3.jpg" alt="On top of Kozi kopka" width="96" height="72">
+    <a href="imagenes01/s3.jpg" title="View larger image" class="ui-icon ui-icon-zoomin">View larger</a>
+    <a href="link/to/trash/script/when/we/have/js/off" title="Delete this image" class="ui-icon ui-icon-trash">Eliminar</a>
+  </li>
+   <li class="ui-widget-content ui-coner-tr">
+    <h5 class="ui-widget-header">IMG 16</h5>
+    <img src="imagenes01/s4.jpg" alt="On top of Kozi kopka" width="96" height="72">
+    <a href="imagenes01/s4.jpg" title="View larger image" class="ui-icon ui-icon-zoomin">View larger</a>
+    <a href="link/to/trash/script/when/we/have/js/off" title="Delete this image" class="ui-icon ui-icon-trash">Eliminar</a>
+  </li>
+  </li>
+</ul>
+ 
+<div id="trash" class="ui-widget-content ui-state-default">
+  <h4 style="text-align: center;" class="ui-widget-header"><span class="ui-icon ui-icon-trash">ELIMINAR</span> ELIMINAR</h4>
+</div>
+ 
+</div>
+ <br><br><br><br><br><br><br><br><br>
+
+<div align="center">
+ <footer ><br><br><br>
+ |
+ <span>  Wendy Santiago Gutierrez 🤓</span>
+ |
+ <span>Programaci&oacuten 🖥️ </span>
+ |
+ <span> Mayo,2020</span>
+ </footer>
+ 
+</body>
+</html>

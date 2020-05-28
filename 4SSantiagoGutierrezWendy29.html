@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Progressbar - Download Dialog</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    var progressTimer,
+      progressbar = $( "#progressbar" ),
+      progressLabel = $( ".progress-label" ),
+      dialogButtons = [{
+        text: "Cancelar ",
+        click: closeDownload
+      }],
+      dialog = $( "#dialog" ).dialog({
+        autoOpen: false,
+        closeOnEscape: false,
+        resizable: false,
+        buttons: dialogButtons,
+        open: function() {
+          progressTimer = setTimeout( progress, 2000 );
+        },
+        beforeClose: function() {
+          downloadButton.button( "option", {
+            disabled: false,
+            label: "Start Download"
+          });
+        }
+      }),
+      downloadButton = $( "#downloadButton" )
+        .button()
+        .on( "click", function() {
+          $( this ).button( "option", {
+            disabled: true,
+            label: "Downloading..."
+          });
+          dialog.dialog( "open" );
+        });
+ 
+    progressbar.progressbar({
+      value: false,
+      change: function() {
+        progressLabel.text( "Current Progress: " + progressbar.progressbar( "value" ) + "%" );
+      },
+      complete: function() {
+        progressLabel.text( "Complete! ✅" );
+        dialog.dialog( "option", "buttons", [{
+          text: "Cerrar",
+          click: closeDownload
+        }]);
+        $(".ui-dialog button").last().trigger( "focus" );
+      }
+    });
+ 
+    function progress() {
+      var val = progressbar.progressbar( "value" ) || 0;
+ 
+      progressbar.progressbar( "value", val + Math.floor( Math.random() * 3 ) );
+ 
+      if ( val <= 99 ) {
+        progressTimer = setTimeout( progress, 50 );
+      }
+    }
+ 
+    function closeDownload() {
+      clearTimeout( progressTimer );
+      dialog
+        .dialog( "option", "buttons", dialogButtons )
+        .dialog( "close" );
+      progressbar.progressbar( "value", false );
+      progressLabel
+        .text( "Starting download..." );
+      downloadButton.trigger( "focus" );
+    }
+  } );
+  </script>
+  <style>
+  #progressbar {
+    margin-top: 20px;
+  }
+ 
+  .progress-label {
+    font-weight: bold;
+    text-shadow: 1px 1px 0 #fff;
+  }
+ 
+  .ui-dialog-titlebar-close {
+    display: none;
+  }
+
+footer{
+border:10px groove lavender;
+   background: white;
+    bottom:0; 
+    color:pink;
+   float:relative;
+  
+  width:97em ;
+  height:10em;
+  margin-right:1em}
+}
+
+  </style>
+</head>
+<body style="background: #D3A1A1">
+
+
+  <nav class="nave">
+<table >
+<tr>
+
+<td><a href=index.php><p style="font-size: 1.6em; background-color:white;font-family:Bernard MT Condensed;">|INICIO|</p></td>
+
+
+<td><a href=4SSantiagoGutierrezWendy17.html><p style=" font-size: 1.2em; background-color:white;font-family:Bernard MT Condensed;">|T&eacute;cnicas De Pintura|</p></td>
+
+
+<td><a href=4SSantiagoGutierrezWendy18.html><p style="font-size: 1.6em;background-color:white;font-family:Bernard MT Condensed;">|Buscador|</p></a></td>
+
+<td><a href=4SSantiagoGutierrezWendy19.html><p style="font-size: 1.6em;background-color:white;font-family:Bernard MT Condensed;">|Deslizar|</p></a></td>
+
+<td><a href=4SSantiagoGutierrezWendy20.html><p style="font-size: 1.6em;background-color:white;font-family:Bernard MT Condensed;">|Delfines|</p></a></td>
+
+<td><a href=4SSantiagoGutierrezWendy21.html><p style="font-size: 1.6em;background-color:white;font-family:Bernard MT Condensed;">
+|Suculentas|</p></a></td>
+
+<td><a href=4SSantiagoGutierrezWendy22.html><p style="font-size: 1.6em;background-color:white;font-family:Bernard MT Condensed;">
+|Colorear|</p></a></td>
+
+<td><a href=4SSantiagoGutierrezWendy23.html><p style="font-size: 1.6em;background-color:white;font-family:Bernard MT Condensed;">
+|Elefantes|</p></a></td>
+
+<td><a href=4SSantiagoGutierrezWendy24.html><p style="font-size: 1.6em;background-color:white;font-family:Bernard MT Condensed;">
+|Futbol|</p></a></td>
+
+<td><a href=4SSantiagoGutierrezWendy25.html><p style="font-size: 1.2em;background-color:white;font-family:Bernard MT Condensed;">
+|Tim Burton|</p></a></td>
+
+<td><a href=4SSantiagoGutierrezWendy26.html><p style="font-size: 1.6em;background-color:white;font-family:Bernard MT Condensed;">
+|Valor|</p></a></td>
+
+<td><a href=4SSantiagoGutierrezWendy27.html><p style="font-size: 1.6em;background-color:white;font-family:Bernard MT Condensed;">
+|Anuncio|</p></a></td>
+
+<td><a href=4SSantiagoGutierrezWendy28.html><p style="font-size: 1.6em;background-color:white;font-family:Bernard MT Condensed;">
+|Video|</p></a></td>
+
+<td><a href=4SSantiagoGutierrezWendy29.html><p style="font-size: 1.6em;background-color:white;font-family:Bernard MT Condensed;">
+|Descarga|</p></a></td>
+
+<td><a href=4SSantiagoGutierrezWendy30.html><p style="font-size: 1.6em;background-color:white;font-family:Bernard MT Condensed;">|Galery|</p></a></td>
+
+
+
+</tr>
+</table>
+</nav>
+
+<br><br><br><br><br><br><br><br>
+
+  
+ <div align="center">
+<div id="dialog" title="Descargando Archivo 📥">
+  <div class="progress-label">Descargando...</div>
+  <div id="progressbar"></div>
+</div>
+<button id="downloadButton">Descargar Archivo </button>
+ </div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+   
+<div align="center">
+ <footer ><br><br><br>
+ |
+ <span>  Wendy Santiago Gutierrez 🤓</span>
+ |
+ <span>Programaci&oacuten 🖥️ </span>
+ |
+ <span> Mayo,2020</span>
+ </footer>
+
+</body>
+</html>
